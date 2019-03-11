@@ -53,6 +53,24 @@
             <path>/bobapp</path>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <webResources>
+            <resource>
+              <directory>src/main/jsp</directory>
+            </resource>
+            <resource>
+              <directory>src/main/javascript</directory>
+            </resource>
+            <resource>
+              <directory>src/main/css</directory>
+            </resource>
+        </webResources>
+      </configuration>
+    </plugin>
     </plugins>
   </build>
 </project>

@@ -5,11 +5,11 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>GetSuggestion</servlet-name>
-    <servlet-class>GetSuggestion</servlet-class>
+    <servlet-name>Suggestion</servlet-name>
+    <servlet-class>Suggestion</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>GetSuggestion</servlet-name>
-    <url-pattern>/*</url-pattern>
+    <servlet-name>Suggestion</servlet-name>
+    <url-pattern>/Suggestion</url-pattern>
   </servlet-mapping>
 </web-app>
