@@ -23,7 +23,9 @@ $( document ).ready(function() {
 
             }
 
-        	}
+        	} else {
+            $("#result").append(spl[0]);
+          }
         }
       });
     });
