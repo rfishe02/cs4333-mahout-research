@@ -24,25 +24,31 @@ public class GetSuggestion extends HttpServlet {
 
    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-      response.setContentType("text/html");
-      PrintWriter out = response.getWriter();
+     int id = 2;
+     int num = 3;
 
-      ServletContext context = request.getServletContext();
-      String fullPath = context.getRealPath("/WEB-INF/classes/dataset.csv");
+     ServletContext context = request.getServletContext();
+     String fullPath = context.getRealPath("/WEB-INF/classes/dataset.csv");
 
-      try {
-        DataModel model = new FileDataModel(new File(fullPath));
-        UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
-        UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.1, similarity, model);
-        UserBasedRecommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
+     response.setContentType("text/html");
+     PrintWriter out = response.getWriter();
 
-        List<RecommendedItem> recommendations = recommender.recommend(2, 3);
-        for (RecommendedItem recommendation : recommendations) {
-          out.println(recommendation);
-        }
-      } catch(TasteException ex2) {
-        ex2.printStackTrace();
-      }
+     try {
+       
+       DataModel model = new FileDataModel(new File(fullPath));
+       UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
+       UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.1, similarity, model);
+       UserBasedRecommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
+
+       List<RecommendedItem> recommendations = recommender.recommend(id,num);
+
+       for (RecommendedItem recommendation : recommendations) {
+         out.println(recommendation.getItemID()+" "+recommendation.getValue()+",");
+       }
+
+     } catch(TasteException ex2) {
+       out.println(-1);
+     }
 
    }
 
