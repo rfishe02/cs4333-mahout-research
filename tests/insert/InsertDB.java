@@ -21,8 +21,8 @@ public class InsertDB {
       int rating;
 
       for(int i = 0; i < 500; i++) {
-        userID = rand.nextInt(150)+100;
-        itemID = rand.nextInt(50)+100;
+        userID = rand.nextInt(100)+1;
+        itemID = rand.nextInt(30)+1;
         rating = rand.nextInt(5);
         st.executeUpdate("INSERT INTO history(user_id,item_id,rating) VALUES ("+userID+","+itemID+","+rating+")");
       }
