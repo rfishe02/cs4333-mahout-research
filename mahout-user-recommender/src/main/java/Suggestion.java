@@ -51,7 +51,7 @@ public class Suggestion extends HttpServlet {
 
        model = new MySQLJDBCDataModel(dataSource,"history", "user_id", "item_id", "rating", null);
      } catch(Exception ex) {
-       //out.println(ex.getMessage()+"</br>");
+       out.println(ex.getMessage()+"</br>");
        // Load backup data if the connection was unsuccessful.
 
        ServletContext context = request.getServletContext();
@@ -69,7 +69,7 @@ public class Suggestion extends HttpServlet {
        }
 
      } catch(Exception ex2) {
-       //out.println(ex2.getMessage()+"");
+       out.println(ex2.getMessage()+"");
      }
    }
 }
