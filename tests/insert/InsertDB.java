@@ -30,7 +30,7 @@ public class InsertDB {
       con.close();
 
     } catch(Exception ex) {
-      System.out.println(ex.getMessage());
+      ex.printStackTrace();
     }
   }
 
