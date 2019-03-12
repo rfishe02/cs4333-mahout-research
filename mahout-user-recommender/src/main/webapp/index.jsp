@@ -88,7 +88,7 @@ sentences long so folks can pick up some informative tidbits. Then, link
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">User-Based Recommendation System</h1>
+      <h1 class="jumbotron-heading">User-Based Recommendation App</h1>
       <p class="lead text-muted"></p>
       <!--<p>
         <a href="#" class="btn btn-primary my-2">Main call to action</a>
@@ -98,7 +98,7 @@ sentences long so folks can pick up some informative tidbits. Then, link
     <form id="myform" action="Suggestion" method="POST">
       <div class="input-group mb-3">
         <input type="text" class="form-control"
-          placeholder="Enter a phrase." id="userID" name="userID">
+          placeholder="Enter an ID" id="userID" name="userID">
         <div class="input-group-append">
           <button class="btn btn-dark" type="submit" id="mybutton">Go</button>
         </div>
