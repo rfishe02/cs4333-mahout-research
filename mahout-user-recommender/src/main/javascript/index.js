@@ -1,10 +1,12 @@
+
 $( document ).ready(function() {
 
-    var form = $("#goform");
+    var form = $("#myform");
     form.on( "submit", function( event ) {
 
       event.preventDefault();
-      $("#result").empty();
+      //$("#result").empty();
+      $("#cardDeck").empty();
 
       $.ajax({
         type: form.attr("method"),
@@ -18,15 +20,34 @@ $( document ).ready(function() {
 
             for (i = 0; i < spl.length; i++) {
               var spl2 = spl[i].split(" ");
-              $("#result").append("<h2>"+spl2[0]+"</h2>");
-        			$("#result").append("<br>");
+
+              var card = "<div class=\"col-md-4\">"
+              + "<div class=\"card mb-4 shadow-sm\">"
+              + "<svg class=\"bd-placeholder-img card-img-top\" width=\"100%\" height=\"225\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"xMidYMid slice\" focusable=\"false\" role=\"img\" aria-label=\"Placeholder: "
+              + spl2[0]+"\"><title>"
+              + spl2[0]+"</title><rect width=\"100%\" height=\"100%\" fill=\"#55595c\"></rect><text x=\"50%\" y=\"50%\" fill=\"#eceeef\" dy=\".3em\">Thumbnail</text></svg>"
+              + "<div class=\"card-body\">"
+              + "<p class=\"card-text\"> </p>"
+              + "<div class=\"d-flex justify-content-between align-items-center\">"
+              //+ "<div class=\"btn-group\">"
+              //+ "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">View</button>"
+              //+ "<button type=\"button\" class=\"btn btn-sm btn-outline-secondary\">Edit</button>"
+              //+ "</div>"
+              //+ "<small class=\"text-muted\">9 mins</small>"
+              + "</div>"
+              + "</div>"
+              + "</div>" ;
+
+              $("#cardDeck").append(card);
 
             }
 
         	} else {
-            $("#result").append(spl[0]);
+            //$("#result").append(spl[0]);
           }
+
         }
+
       });
     });
 

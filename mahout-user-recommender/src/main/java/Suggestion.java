@@ -34,8 +34,11 @@ public class Suggestion extends HttpServlet {
      response.setContentType("text/html");
      PrintWriter out = response.getWriter();
 
-     int id = Integer.parseInt(request.getParameter("userID"));
-     int num = Integer.parseInt(request.getParameter("numReq"));
+     //int id = Integer.parseInt(request.getParameter("userID"));
+     //int num = Integer.parseInt(request.getParameter("numReq"));
+
+     int id = 13;
+     int num = 6;
 
      DataModel model = null;
 
