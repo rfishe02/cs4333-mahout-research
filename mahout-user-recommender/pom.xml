@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>bob.group.id</groupId>
-  <artifactId>tomcat-war-deployment</artifactId>
+  <groupId>com.bob.recommender</groupId>
+  <artifactId>mahout-user-recommender</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>tomcat-war-deployment Maven Webapp</name>
+  <name>mahout-user-recommender Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -47,7 +47,7 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>tomcat-war-deployment</finalName>
+    <finalName>mahout-user-recommender</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.tomcat.maven</groupId>
@@ -56,7 +56,7 @@
         <configuration>
           <url>http://localhost:8080/manager/text</url>
           <server>TomcatServer</server>
-            <path>/mahout-rec</path>
+          <path>/mahout-rec</path>
         </configuration>
       </plugin>
       <plugin>
@@ -64,19 +64,19 @@
         <artifactId>maven-war-plugin</artifactId>
         <version>2.3</version>
         <configuration>
-          <webResources>
-            <resource>
-              <directory>src/main/jsp</directory>
-            </resource>
-            <resource>
-              <directory>src/main/javascript</directory>
-            </resource>
-            <resource>
-              <directory>src/main/css</directory>
-            </resource>
-        </webResources>
-      </configuration>
-    </plugin>
+           <webResources>
+             <resource>
+               <directory>src/main/jsp</directory>
+             </resource>
+             <resource>
+               <directory>src/main/javascript</directory>
+             </resource>
+             <resource>
+               <directory>src/main/css</directory>
+             </resource>
+           </webResources>
+         </configuration>
+	   </plugin>
     </plugins>
   </build>
 </project>
