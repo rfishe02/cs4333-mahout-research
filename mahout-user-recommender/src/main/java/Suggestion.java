@@ -3,6 +3,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
 import java.util.List;
+import java.sql.*;
 
 import org.apache.mahout.cf.taste.model.DataModel;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;
@@ -37,8 +38,6 @@ public class Suggestion extends HttpServlet {
      try {
 
        int id = Integer.parseInt(request.getParameter("userID"));
-       int num = 6;
-
        DataModel model = null;
 
        try {
@@ -56,7 +55,7 @@ public class Suggestion extends HttpServlet {
 
          // Load backup data if the connection was unsuccessful.
          ServletContext context = request.getServletContext();
-         //model = new FileDataModel(new File(context.getRealPath("/WEB-INF/classes/dataset.csv")));
+         model = new FileDataModel(new File(context.getRealPath("/WEB-INF/classes/dataset.csv")));
 
        }
 
@@ -64,9 +63,37 @@ public class Suggestion extends HttpServlet {
        UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.10, similarity, model);
        UserBasedRecommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
 
-       List<RecommendedItem> recommendations = recommender.recommend(id,num);
+       List<RecommendedItem> recommendations = recommender.recommend(id,6);
+
        for (RecommendedItem recommendation : recommendations) {
-         out.println(recommendation.getItemID()+" "+recommendation.getValue()+",");
+         out.print(recommendation.getItemID()+" "+recommendation.getValue()+",");
+       }
+
+       try {
+
+         Class.forName("com.mysql.cj.jdbc.Driver");
+         Connection con = DriverManager.getConnection(
+         "jdbc:mysql://localhost:3306/cs4333",
+         "dbuser",
+         "mariadb"
+         );
+
+         Statement st = con.createStatement();
+         out.print("\t");
+
+         long[] users = recommender.mostSimilarUserIDs(id,3);
+         for(long user : users) {
+           ResultSet rs = st.executeQuery("SELECT * FROM history WHERE user_id ="+id);
+
+           while(rs.next()) {
+             out.print(user+" "+rs.getString("item_id")+" "+rs.getString("rating")+",");
+           }
+         }
+
+         st.close();
+
+       } catch(Exception ex) {
+
        }
 
      } catch(Exception ex){

@@ -1,6 +1,4 @@
 
-
-
 $( document ).ready(function() {
 
   // Load random, but cached, images into an Array for display.
@@ -25,31 +23,33 @@ $( document ).ready(function() {
 
         console.log("data: "+data)
 
-      	var spl = data.split(",");
+        var spl0 = data.split("\t");
 
-      	if(spl.length > 2) {
+        if(spl0 > 1) {
+          
 
-          for (i = 0; i < spl.length-1; i++) {
-            var spl2 = spl[i].split(" ");
-            var img = spl2[0]-1;
+        }
 
-            var card = "<div class=\"col-md-4\">"
-            + "<div class=\"card mb-4 shadow-sm\">"
-            + "<img class=\"card-img-top\" src=\""
-            + images[img]+"\" alt=\"Card image cap\">"
-            + "<div class=\"card-body\">"
-            + "<p class=\"card-text\">IMG# "+spl2[0]+"</p>"
-            + "<div class=\"d-flex justify-content-between align-items-center\">"
-            + "</div>"
-            + "</div>"
-            + "</div>";
+      	var spl1 = spl0[0].split(",");
 
-            $("#cardDeck").append(card);
+        for (i = 0; i < spl1.length-1; i++) {
 
-          }
+          var spl2 = spl[i].split(" ");
+          var img = spl2[0]-1;
 
-      	} else {
-          $("#cardDeck").append(spl[0]);
+          var card = "<div class=\"col-md-4\">"
+          + "<div class=\"card mb-4 shadow-sm\">"
+          + "<img class=\"card-img-top\" src=\""
+          + images[img]+"\" alt=\"Card image cap\">"
+          + "<div class=\"card-body\">"
+          + "<p class=\"card-text\">IMG# "+spl2[0]+"</p>"
+          + "<div class=\"d-flex justify-content-between align-items-center\">"
+          + "</div>"
+          + "</div>"
+          + "</div>";
+
+          $("#cardDeck").append(card);
+
         }
 
       }, error : function(jqXHR,textStatus,errorThrown) {
