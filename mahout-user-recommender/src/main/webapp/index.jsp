@@ -12,14 +12,21 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
 
-      <script src="https://code.jquery.com/jquery-3.3.1.js"
-  		   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  		   crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- CHART JS -->
 
-    <!-- Bootstrap CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+  	   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  	   crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Custom styles for this page -->
     <link href="index.css" rel="stylesheet">
@@ -51,30 +58,27 @@
   <div class="bg-dark collapse" id="navbarHeader" style="">
     <div class="container">
       <div class="row">
-       <!--
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album
-below, the author, or any other background context. Make it a few
-sentences long so folks can pick up some informative tidbits. Then, link
- them off to some social networking sites or contact information.</p>
+          <p class="text-muted"> This application uses the PearsonCorrelationSimilarity class from the Mahout library to generate a list of recommended pictures for a given user. </p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
+          <!--
           <h4 class="text-white">Contact</h4>
           <ul class="list-unstyled">
             <li><a href="#" class="text-white">Follow on Twitter</a></li>
             <li><a href="#" class="text-white">Like on Facebook</a></li>
             <li><a href="#" class="text-white">Email me</a></li>
           </ul>
+          -->
         </div>
-      -->
       </div>
     </div>
   </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container d-flex justify-content-between">
       <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="mr-2" viewBox="0 0 24 24" focusable="false"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+        <i class="fas fa-cat"></i> &nbsp;
         <strong>Album</strong>
       </a>
       <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,22 +93,38 @@ sentences long so folks can pick up some informative tidbits. Then, link
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">User-Based Recommendation App</h1>
-      <p class="lead text-muted"></p>
-      <!--<p>
-        <a href="#" class="btn btn-primary my-2">Main call to action</a>
-        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-      </p>-->
-
+      <p class="lead text-muted"><br><br></p>
     <form id="myform" action="Suggestion" method="POST">
-      <div class="input-group mb-3">
-        <input type="text" class="form-control"
-          placeholder="Enter an ID" id="userID" name="userID">
-        <div class="input-group-append">
-          <button class="btn btn-dark" type="submit" id="mybutton">Go</button>
-        </div>
+      <div class="input-group">
+        <select class="custom-select" id="userID" name="userID">
+          <option selected>Choose user...</option>
+          <option value="1">Alice</option>
+          <option value="2">Bob</option>
+          <option value="3">Ciara</option>
+          <option value="4">Diane</option>
+          <option value="5">Esteban</option>
+          <option value="6">Franklin</option>
+          <option value="7">George</option>
+          <option value="8">Hailey</option>
+          <option value="9">Isadora</option>
+          <option value="10">Janet</option>
+          <option value="11">Kathleen</option>
+          <option value="12">Lupita</option>
+          <option value="13">Maura</option>
+          <option value="14">Nina</option>
+          <option value="15">Oberto</option>
+          <option value="16">Paula</option>
+        </select>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit" id="mybutton">Button</button>
       </div>
+    </div>
     </form>
+    <br><br>
 
+      <canvas id="scatter" width="100" height="100"></canvas>
+
+    </div>
     </div>
   </section>
 

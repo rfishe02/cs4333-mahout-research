@@ -60,7 +60,7 @@ public class Suggestion extends HttpServlet {
        }
 
        UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
-       UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.10, similarity, model);
+       UserNeighborhood neighborhood = new ThresholdUserNeighborhood(0.05, similarity, model);
        UserBasedRecommender recommender = new GenericUserBasedRecommender(model, neighborhood, similarity);
 
        List<RecommendedItem> recommendations = recommender.recommend(id,6);
@@ -79,25 +79,39 @@ public class Suggestion extends HttpServlet {
          );
 
          Statement st = con.createStatement();
-         out.print("\t");
+         out.print("\t"); // Separate sets.
+
+         ResultSet rs = st.executeQuery("SELECT a.user_id, a.item_id, a.rating, b.name FROM history a, names b WHERE a.user_id = b.user_id AND a.user_id ="+id+" ORDER BY item_id");
+
+         while(rs.next()) {
+           out.print(id+" "+rs.getString("item_id")+" "+rs.getString("rating")+" "+rs.getString("name")+",");
+         }
+         out.print("|");
 
          long[] users = recommender.mostSimilarUserIDs(id,3);
-         for(long user : users) {
-           ResultSet rs = st.executeQuery("SELECT * FROM history WHERE user_id ="+id);
+
+         for(int a = 0; a < users.length; a++) {
+
+           rs = st.executeQuery("SELECT a.user_id, a.item_id, a.rating, b.name FROM history a, names b WHERE a.user_id = b.user_id AND a.user_id ="+users[a]+" ORDER BY item_id");
 
            while(rs.next()) {
-             out.print(user+" "+rs.getString("item_id")+" "+rs.getString("rating")+",");
+             out.print(users[a]+" "+rs.getString("item_id")+" "+rs.getString("rating")+" "+rs.getString("name")+",");
            }
+
+           if(a < users.length-1) {
+             out.print("|");
+           }
+
          }
 
          st.close();
 
        } catch(Exception ex) {
-
+         out.println("database select error");
        }
 
      } catch(Exception ex){
-       out.println("");
+       out.println("error");
      }
 
    }
