@@ -122,7 +122,7 @@
     </form>
     <br><br>
 
-      <canvas id="scatter" width="100" height="100"></canvas>
+      <canvas id="scatter" width="1" height="1"></canvas>
 
     </div>
     </div>

@@ -30,7 +30,7 @@ $( document ).ready(function() {
 
           var datasets = []
           var spl1 = spl0[1].split("|");
-          var backgroundCol = ["rgb(244, 66, 66)","rgb(244, 238, 65)","rgb(65, 244, 88)","rgb(65, 67, 244)"];
+          var backgroundCol = ["rgb(244, 66, 66, 0.5)","rgb(244, 238, 65, 0.5)","rgb(65, 244, 88, 0.5)","rgb(65, 67, 244, 0.5)"];
           var k = 0;
 
           for(b = 0; b < spl1.length; b++) {
@@ -50,7 +50,7 @@ $( document ).ready(function() {
               }
               dat.push(parseInt(spl1B[2]));
             }
-            datasets.push({label: label, data: dat, fill: true, backgroundColor: backgroundCol[k]});
+            datasets.push({label: label, data: dat, backgroundColor: backgroundCol[k]});
             k++;
           }
 
