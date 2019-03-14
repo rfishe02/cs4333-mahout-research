@@ -6,7 +6,7 @@ $( document ).ready(function() {
   /*
   var images = [];
   var rand = 3;
-  for(a = 1; a <= 30; a++) {
+  for(a = 1; a <= 16; a++) {
     images.push("https://loremflickr.com/320/240?random="+(a+rand)+"?lock="+a);
     rand += 3;
   }*/

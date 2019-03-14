@@ -60,7 +60,7 @@
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4 class="text-white">About</h4>
-          <p class="text-muted"> This application uses the PearsonCorrelationSimilarity class from the Mahout library to generate a list of recommended pictures for a given user. </p>
+          <p class="text-muted"> This application uses the PearsonCorrelationSimilarity class from the Mahout library to generate a list of recommended items for a given user. It also shows how the top three similar users rated the objects they chose. The pictures are insignificant placeholders, but each IMG number comes from the recommendation algorithm.</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <!--
